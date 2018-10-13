@@ -4,8 +4,5 @@
   "description": "Next generation templating engine",
   "main": "index.js",
   "author": "Erwan ROUSSEL",
-  "license": "MIT",
-  "devDependencies": {
-    "minifyjs": "^0.2.0"
-  }
+  "license": "MIT"
 }
