@@ -1,0 +1,8 @@
+{
+  "name": "eazerjs",
+  "version": "1.0.0",
+  "description": "Next generation templating engine",
+  "main": "index.js",
+  "author": "Erwan ROUSSEL",
+  "license": "MIT"
+}
