@@ -1,1 +1,3 @@
-// Eazer JS
+class Page {
+    constructor(content, aliases, components)
+}
