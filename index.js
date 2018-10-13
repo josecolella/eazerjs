@@ -5,7 +5,7 @@
  */
 class Page {
 
-    constructor(content, aliases, style = '') {
+    constructor(content, aliases, style) {
 
         this.content = content
 
@@ -20,7 +20,7 @@ class Page {
      */
     render() {
 
-        let body = `<div class='page' ${globalStyle ? `style="${globalStyle}"` : ""}>`
+        let body = `<div class='page' ${this.style ? `style="${this.style}"` : ""}>`
 
         for (property in this.content) {
 
@@ -30,15 +30,21 @@ class Page {
 
                 case 'link':
                     
-                    body += `<a href="${this.content[property].href}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property].content}</a>`;
+                    body += `<a href="${this.content[property].href}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property].content}</a>`
 
-                    break;
+                    break
             
+                case 'img':
+
+                    body += `<img src="${this.content[property]}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}"/>`
+
+                    break
+                    
                 default:
 
-                    body += `<${alias.type} ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property]}</${alias.type}>`;
+                    body += `<${alias.type} ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property]}</${alias.type}>`
                     
-                    break;
+                    break
             }
 
         }
