@@ -27,8 +27,6 @@ class Component {
 
         for (let property in this.content) {
 
-            console.log(this)
-
             const alias = this.aliases[property]
 
             this.type(alias, property)
@@ -74,45 +72,39 @@ class Component {
     }
 }
 
-/*let Style = `
-box-sizing: border-box;
-font-family: Arial;
-`
+/**
+ * @class Group - The group class
+ */
+class Group {
 
-let Title = {
-    type: "h1",
-    class: "titre-class"
-}
+    constructor(name, classname, id, style) {
 
-let SubTitle = {
-    type: "h2",
+        this.name = name
+
+        this.classname = classname
+
+        this.id = id
+
+        this.style = style
+
+    }
+
+    /**
+     * @function include - Create a div
+     * @param {Object[]} components 
+     */
+    include(components) {
+
+        let content
+
+        for (let component of components) { 
+            content += component.render()
+        }
+
+        content = content.replace('undefined', '')
+        
+        return `<div class="${this.classname ? this.classname : ''}" id="${this.id ? this.id : ''}" style="${this.style ? this.style : ''}">${content}</div>`
+
+    }
 
 }
-
-let Paragraphe = {
-    type: "p",
-    id: "paragraphe"
-}
-
-let Image = {
-    type: "img",
-    style: "width: 100px; height: 100px"
-}
-
-let Link = {
-    type: "link"
-}
-const aliases = {
-    titre: Title,
-    text: Paragraphe
-}
-const menucontent = {
-    titre: 'Hello',
-}
-const maincontent = {
-    text: 'World'
-}
-const menu = new Component('menu', menucontent, aliases)
-const main = new Component('main', maincontent, aliases)
-const page = `<div>${menu.render()}${main.render()}</div>`
-console.log(page)*/
