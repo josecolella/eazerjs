@@ -6,70 +6,70 @@
  */
 class Component {
 
-    constructor(name, content, aliases, style) {
+  constructor (name, content, aliases, style) {
 
-        this.name = name
+    this.name = name
 
-        this.content = content
+    this.content = content
 
-        this.aliases = aliases
+    this.aliases = aliases
 
-        this.style = style
+    this.style = style
 
-        this.body = `<div class='${this.name}' ${this.style ? `style="${this.style}"` : ""}>`
+    this.body = `<div class='${this.name}' ${this.style ? `style="${this.style}"` : ""}>`
 
-    }
+  }
 
-    /**
-     * @function render - Render the page
-     */
-    render() {
+  /**
+   * @function render - Render the page
+   */
+  render () {
 
-        for (let property in this.content) {
+    for (let property in this.content) {
 
-            const alias = this.aliases[property]
+      const alias = this.aliases[property]
 
-            this.type(alias, property)
+      this.type(alias, property)
 
-            this.body += `</div>`
+      this.body += `</div>`
 
-            this.body = this.body.replace(/:n/g, '<br>')
-            this.body = this.body.replace('undefined', '')
+      this.body = this.body.replace(/:n/g, '<br>')
+      this.body = this.body.replace('undefined', '')
 
-            return this.body
-
-        }
-    }
-
-    /**
-     * @function type - Check the type of property and generate html
-     * @param {Object} alias - The alias name
-     * @param {string} property - The property name
-     */
-    type(alias, property) {
-
-        switch (alias) {
-
-            case 'link':
-                
-                this.body += `<a href="${this.content[property].href}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property].content}</a>`
-
-                break
-        
-            case 'img':
-
-                this.body += `<img src="${this.content[property]}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}"/>`
-
-                break
-
-            default:
-
-                this.body += `<${alias.type} ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property]}</${alias.type}>`
-                
-                break
-        }
+      return this.body
 
     }
+  }
+
+  /**
+   * @function type - Check the type of property and generate html
+   * @param {Object} alias - The alias name
+   * @param {string} property - The property name
+   */
+  type (alias, property) {
+
+    switch (alias) {
+
+      case 'link':
+
+        this.body += `<a href="${this.content[property].href}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property].content}</a>`
+
+        break
+
+      case 'img':
+
+        this.body += `<img src="${this.content[property]}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}"/>`
+
+        break
+
+      default:
+
+        this.body += `<${alias.type} ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property]}</${alias.type}>`
+
+        break
+    }
+
+  }
 }
 
 /**
@@ -77,34 +77,36 @@ class Component {
  */
 class Group {
 
-    constructor(name, classname, id, style) {
+  constructor (name, classname, id, style) {
 
-        this.name = name
+    this.name = name
 
-        this.classname = classname
+    this.classname = classname
 
-        this.id = id
+    this.id = id
 
-        this.style = style
+    this.style = style
 
+  }
+
+  /**
+   * @function include - Create a div
+   * @param {Object[]} components 
+   */
+  include (components) {
+
+    let content
+
+    for (let component of components) {
+      content += component.render()
     }
 
-    /**
-     * @function include - Create a div
-     * @param {Object[]} components 
-     */
-    include(components) {
+    content = content.replace('undefined', '')
 
-        let content
+    return `<div class="${this.classname ? this.classname : ''}" id="${this.id ? this.id : ''}" style="${this.style ? this.style : ''}">${content}</div>`
 
-        for (let component of components) { 
-            content += component.render()
-        }
-
-        content = content.replace('undefined', '')
-        
-        return `<div class="${this.classname ? this.classname : ''}" id="${this.id ? this.id : ''}" style="${this.style ? this.style : ''}">${content}</div>`
-
-    }
+  }
 
 }
+
+module.exports = {Component, Group}
