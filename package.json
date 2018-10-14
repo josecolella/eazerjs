@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dimensi0n/eazerjs/issues"
   },
-  "homepage": "https://github.com/dimensi0n/eazerjs#readme"
+  "homepage": "https://github.com/dimensi0n/eazerjs#readme",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
 }
