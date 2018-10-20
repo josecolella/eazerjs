@@ -1,4 +1,4 @@
-const { Component } = require('../eazer')
+const { Component } = require('../lib/eazer')
 
 test('return a full component', () => {
 
