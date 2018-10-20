@@ -1,4 +1,9 @@
 /**
+ * Eazerjs - The next generation templating engine
+ * @module eazerjs
+ */
+
+/**
  * @class Component - The Page class
  * @param {string} name - The component name
  * @param {Object} content - The component content
