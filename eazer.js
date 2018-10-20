@@ -149,9 +149,9 @@ class Page {
 
       this.charset = charset
 
-      this.styles = styles ? styles : false
+      this.styles = styles ? styles : []
 
-      this.javascripts = javascripts ? javascripts : false
+      this.javascripts = javascripts ? javascripts : []
 
     }
 
@@ -173,13 +173,7 @@ class Page {
    */
   render () {
 
-    let body = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>${this.title}</title>
-        <meta type="description" content="${this.description}" />
-    `
+    let body = `<!DOCTYPE html><html><head><title>${this.title}</title><meta type="description" content="${this.description}" />`
 
     for (let style of this.styles) {
 
