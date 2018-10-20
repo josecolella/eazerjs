@@ -22,6 +22,7 @@ class Component {
 
   /**
    * @function render - Render the page
+   * @returns {string} - Page
    */
   render () {
 
@@ -91,7 +92,8 @@ class Group {
 
   /**
    * @function include - Create a div
-   * @param {Object[]} components 
+   * @param {Component[]} components 
+   * @returns {string} - Div
    */
   include (components) {
 

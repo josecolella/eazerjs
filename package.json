@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/dimensi0n/eazerjs.git"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "keywords": [
     "templating",
     "dom"
@@ -17,5 +20,7 @@
     "url": "https://github.com/dimensi0n/eazerjs/issues"
   },
   "homepage": "https://github.com/dimensi0n/eazerjs#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
