@@ -22,7 +22,7 @@ class Component {
 
   /**
    * Render the page
-   * @returns {string} - Page
+   * @return {string} Page
    */
   render() {
 
@@ -107,7 +107,7 @@ class Group {
 
   /**
    * Render the Group
-   * @returns {string} - Div
+   * @return {string} Div
    */
   render() {
 
@@ -169,7 +169,7 @@ class Page {
 
   /**
    * Render the page
-   * @returns {string} - HTML Page
+   * @return {string} HTML Page
    */
   render () {
 
