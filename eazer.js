@@ -6,7 +6,7 @@
  */
 class Component {
 
-  constructor (name, content, aliases, style) {
+  constructor(name, content, aliases, style) {
 
     this.name = name
 
@@ -24,7 +24,7 @@ class Component {
    * @function render - Render the page
    * @returns {string} - Page
    */
-  render () {
+  render() {
 
     for (let property in this.content) {
 
@@ -35,6 +35,7 @@ class Component {
       this.body += `</div>`
 
       this.body = this.body.replace(/:n/g, '<br>')
+
       this.body = this.body.replace('undefined', '')
 
       return this.body
@@ -47,7 +48,7 @@ class Component {
    * @param {Object} alias - The alias name
    * @param {string} property - The property name
    */
-  type (alias, property) {
+  type(alias, property) {
 
     switch (alias) {
 
@@ -75,10 +76,14 @@ class Component {
 
 /**
  * @class Group - The group class
+ * @param {string} name - Name
+ * @param {string} classname - Class name
+ * @param {string} id - Id
+ * @param {string} style - Style
  */
 class Group {
 
-  constructor (name, classname, id, style) {
+  constructor(name, classname, id, style) {
 
     this.name = name
 
@@ -93,14 +98,25 @@ class Group {
   /**
    * @function include - Create a div
    * @param {Component[]} components 
+   */
+  include(components) {
+
+    this.components = components
+
+  }
+
+  /**
+   * @function render - Render the Group
    * @returns {string} - Div
    */
-  include (components) {
+  render() {
 
     let content
 
-    for (let component of components) {
+    for (let component of this.components) {
+
       content += component.render()
+
     }
 
     content = content.replace('undefined', '')
@@ -111,4 +127,90 @@ class Group {
 
 }
 
-module.exports = {Component, Group}
+/**
+ * @class Page - The page class
+ * @param {string} title - The Page title
+ * @param {string} description - The Page decription (meta)
+ * @param {string} charset - The page charset (meta)
+ * @param {string[]} styles - Stylesheets (link)
+ * @param {string[]} javascripts - Scripts (scripts)
+ */
+class Page {
+
+  constructor(title, description, charset, styles, javascripts) {
+
+    if (!title || !description || !charset) throw 'You have to use a title, a description and a charset'
+
+    else {
+
+      this.title = title
+
+      this.description = description
+
+      this.charset = charset
+
+      this.styles = styles ? styles : false
+
+      this.javascripts = javascripts ? javascripts : false
+
+    }
+
+  }
+  
+  /**
+   * @function require - Give the groups to the page body
+   * @param {Group[]} groups 
+   */
+  require(groups) {
+
+    this.groups = groups
+
+  }
+
+  /**
+   * @function render - Render the page
+   * @returns {string} - HTML Page
+   */
+  render () {
+
+    let body = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>${this.title}</title>
+        <meta type="description" content="${this.description}" />
+    `
+
+    for (let style of this.styles) {
+
+      body += `<link rel="stylesheet" href="${style}"/>`
+
+    }
+
+    for (let script of this.javascripts) {
+
+      body += `<script src="${script}">`
+
+    }
+
+    body += `</head><body>`
+
+    for (let group of this.groups) {
+
+      body += `${group.render()}`
+
+    }
+
+    body += `</body></html>`
+
+    return body
+
+  }
+
+}
+
+module.exports = {
+  Component,
+  Group,
+  Page
+}
