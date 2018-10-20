@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Page - Documentation</title>
+    <title>Component - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Page</h1>
+    <h1 class="page-title">Component</h1>
     
 
     
@@ -44,10 +44,10 @@
         <h2>
             <span class="ancestors"><a href="module-eazerjs.html">eazerjs</a>~</span>
         
-        Page
+        Component
         </h2>
         
-            <div class="class-description">Page - The page class</div>
+            <div class="class-description">Component - The Page class</div>
         
     
 </header>
@@ -62,7 +62,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Page"><span class="type-signature"></span>new Page<span class="signature">(title, description, charset, styles, javascripts)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Component"><span class="type-signature"></span>new Component<span class="signature">(name, content, aliases)</span><span class="type-signature"></span></h4>
 
     
 
@@ -101,7 +101,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line143">line 143</a>
+        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -145,7 +145,7 @@
 
         <tr>
             
-                <td class="name"><code>title</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -162,7 +162,7 @@
             
 
             <td class="description last">
-                The Page title
+                The component name
                 
             </td>
         </tr>
@@ -171,13 +171,13 @@
 
         <tr>
             
-                <td class="name"><code>description</code></td>
+                <td class="name"><code>content</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code>Object</code></span>
 
 
             
@@ -188,7 +188,7 @@
             
 
             <td class="description last">
-                The Page decription (meta)
+                The component content
                 
             </td>
         </tr>
@@ -197,13 +197,13 @@
 
         <tr>
             
-                <td class="name"><code>charset</code></td>
+                <td class="name"><code>aliases</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code>Array.&lt;Object></code></span>
 
 
             
@@ -214,59 +214,7 @@
             
 
             <td class="description last">
-                The page charset (meta)
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>styles</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Array.&lt;string></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                Stylesheets (link)
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>javascripts</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Array.&lt;string></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                Scripts (scripts)
+                The types aliases
                 
             </td>
         </tr>
@@ -358,7 +306,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line179">line 179</a>
+        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -408,7 +356,7 @@
 
 
 <div class="param-desc">
-    HTML Page
+    Page
 </div>
 
     
@@ -423,14 +371,14 @@
 
     
 
-    <h4 class="name" id="require"><span class="type-signature"></span>require<span class="signature">(groups)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="type"><span class="type-signature"></span>type<span class="signature">(alias, property)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Give the groups to the page body
+    Check the type of property and generate html
 </div>
 
 
@@ -466,7 +414,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line169">line 169</a>
+        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -510,13 +458,13 @@
 
         <tr>
             
-                <td class="name"><code>groups</code></td>
+                <td class="name"><code>alias</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>Array.&lt;Group></code></span>
+<span class="param-type"><code>Object</code></span>
 
 
             
@@ -527,7 +475,33 @@
             
 
             <td class="description last">
+                The alias name
                 
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>property</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                The property name
                 
             </td>
         </tr>
@@ -570,7 +544,7 @@
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Oct 20 2018 14:38:34 GMT+0200 (Central European Summer Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Oct 20 2018 14:56:02 GMT+0200 (Central European Summer Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

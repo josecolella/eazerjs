@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Component - Documentation</title>
+    <title>Group - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Component</h1>
+    <h1 class="page-title">Group</h1>
     
 
     
@@ -44,10 +44,10 @@
         <h2>
             <span class="ancestors"><a href="module-eazerjs.html">eazerjs</a>~</span>
         
-        Component
+        Group
         </h2>
         
-            <div class="class-description">Component - The Page class</div>
+            <div class="class-description">Group - The group class</div>
         
     
 </header>
@@ -62,7 +62,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Component"><span class="type-signature"></span>new Component<span class="signature">(name, content, aliases)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Group"><span class="type-signature"></span>new Group<span class="signature">(name, classname, id, style)</span><span class="type-signature"></span></h4>
 
     
 
@@ -101,7 +101,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line12">line 12</a>
+        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -162,7 +162,7 @@
             
 
             <td class="description last">
-                The component name
+                Name
                 
             </td>
         </tr>
@@ -171,13 +171,13 @@
 
         <tr>
             
-                <td class="name"><code>content</code></td>
+                <td class="name"><code>classname</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>Object</code></span>
+<span class="param-type"><code>string</code></span>
 
 
             
@@ -188,7 +188,7 @@
             
 
             <td class="description last">
-                The component content
+                Class name
                 
             </td>
         </tr>
@@ -197,13 +197,13 @@
 
         <tr>
             
-                <td class="name"><code>aliases</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>Array.&lt;Object></code></span>
+<span class="param-type"><code>string</code></span>
 
 
             
@@ -214,7 +214,33 @@
             
 
             <td class="description last">
-                The types aliases
+                Id
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>style</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Style
                 
             </td>
         </tr>
@@ -263,14 +289,14 @@
 
     
 
-    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="include"><span class="type-signature"></span>include<span class="signature">(components)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Render the page
+    Create a div
 </div>
 
 
@@ -306,7 +332,142 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line32">line 32</a>
+        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line107">line 107</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>components</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array.&lt;Component></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Render the Group
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line117">line 117</a>
     </li></ul></dd>
     
 
@@ -356,172 +517,11 @@
 
 
 <div class="param-desc">
-    Page
+    Div
 </div>
 
     
 </div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="type"><span class="type-signature"></span>type<span class="signature">(alias, property)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Check the type of property and generate html
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="eazer.js.html">eazer.js</a>, <a href="eazer.js.html#line56">line 56</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>alias</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The alias name
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>property</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The property name
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -544,7 +544,7 @@
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Oct 20 2018 14:38:34 GMT+0200 (Central European Summer Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Oct 20 2018 14:56:02 GMT+0200 (Central European Summer Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

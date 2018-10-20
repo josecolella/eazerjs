@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": ["eazer.js", "package.json", "README.md"],
+    "include": ["eazer.js", "README.md"],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)" 
   },
