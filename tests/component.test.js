@@ -21,6 +21,5 @@ test('return a full component', () => {
   }
 
   const component = new Component('MySuperComponent', content, aliases)
-  console.log(component.render())
-  expect(1).toEqual(1)
+  expect(component.render()).toBe(`<div class='MySuperComponent' ><h1   style="">Super component</h1></div>`)
 })
