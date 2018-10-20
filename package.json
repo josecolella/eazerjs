@@ -17,5 +17,7 @@
     "url": "https://github.com/dimensi0n/eazerjs/issues"
   },
   "homepage": "https://github.com/dimensi0n/eazerjs#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
