@@ -1,4 +1,4 @@
-const { Component } = require('../lib/eazer')
+const { Component } = require('../eazer')
 
 test('return a styled component', () => {
   const Title = {

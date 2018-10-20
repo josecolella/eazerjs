@@ -1,4 +1,4 @@
-const { Component, Group, Page } = require('../lib/eazer')
+const { Component, Group, Page } = require('../eazer')
 
 test('return a page', () => {
 
