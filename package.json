@@ -10,7 +10,8 @@
     "url": "git+https://github.com/dimensi0n/eazerjs.git"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
   },
   "keywords": [
     "templating",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/dimensi0n/eazerjs#readme",
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "minami": "^1.2.3"
   }
 }

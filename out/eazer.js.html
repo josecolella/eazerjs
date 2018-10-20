@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: eazer.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: eazer.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Eazerjs - The next generation templating engine
+ * @module eazerjs
+ */
+
+/**
+ * @class Component - The Page class
+ * @param {string} name - The component name
+ * @param {Object} content - The component content
+ * @param {Object[]} aliases - The types aliases
+ */
+class Component {
+
+  constructor(name, content, aliases, style) {
+
+    this.name = name
+
+    this.content = content
+
+    this.aliases = aliases
+
+    this.style = style
+
+    this.body = `&lt;div class='${this.name}' ${this.style ? `style="${this.style}"` : ""}>`
+
+  }
+
+  /**
+   * Render the page
+   * @return {string} Page
+   */
+  render() {
+
+    for (let property in this.content) {
+
+      const alias = this.aliases[property]
+
+      this.type(alias, property)
+
+      this.body += `&lt;/div>`
+
+      this.body = this.body.replace(/:n/g, '&lt;br>')
+
+      this.body = this.body.replace('undefined', '')
+
+      return this.body
+
+    }
+  }
+
+  /**
+   * Check the type of property and generate html
+   * @param {Object} alias - The alias name
+   * @param {string} property - The property name
+   */
+  type(alias, property) {
+
+    switch (alias) {
+
+      case 'link':
+
+        this.body += `&lt;a href="${this.content[property].href}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property].content}&lt;/a>`
+
+        break
+
+      case 'img':
+
+        this.body += `&lt;img src="${this.content[property]}" ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}"/>`
+
+        break
+
+      default:
+
+        this.body += `&lt;${alias.type} ${alias.class ? `class="${alias.class}"` : ""} ${alias.id ? `id="${alias.id}"` : ""} style="${alias.style}">${this.content[property]}&lt;/${alias.type}>`
+
+        break
+    }
+
+  }
+}
+
+/**
+ * @class Group - The group class
+ * @param {string} name - Name
+ * @param {string} classname - Class name
+ * @param {string} id - Id
+ * @param {string} style - Style
+ */
+class Group {
+
+  constructor(name, classname, id, style) {
+
+    this.name = name
+
+    this.classname = classname
+
+    this.id = id
+
+    this.style = style
+
+  }
+
+  /**
+   * Create a div
+   * @param {Component[]} components 
+   */
+  include(components) {
+
+    this.components = components
+
+  }
+
+  /**
+   * Render the Group
+   * @return {string} Div
+   */
+  render() {
+
+    let content
+
+    for (let component of this.components) {
+
+      content += component.render()
+
+    }
+
+    content = content.replace('undefined', '')
+
+    return `&lt;div class="${this.classname ? this.classname : ''}" id="${this.id ? this.id : ''}" style="${this.style ? this.style : ''}">${content}&lt;/div>`
+
+  }
+
+}
+
+/**
+ * @class Page - The page class
+ * @param {string} title - The Page title
+ * @param {string} description - The Page decription (meta)
+ * @param {string} charset - The page charset (meta)
+ * @param {string[]} styles - Stylesheets (link)
+ * @param {string[]} javascripts - Scripts (scripts)
+ */
+class Page {
+
+  constructor(title, description, charset, styles, javascripts) {
+
+    if (!title || !description || !charset) throw 'You have to use a title, a description and a charset'
+
+    else {
+
+      this.title = title
+
+      this.description = description
+
+      this.charset = charset
+
+      this.styles = styles ? styles : []
+
+      this.javascripts = javascripts ? javascripts : []
+
+    }
+
+  }
+  
+  /**
+   * Give the groups to the page body
+   * @param {Group[]} groups 
+   */
+  require(groups) {
+
+    this.groups = groups
+
+  }
+
+  /**
+   * Render the page
+   * @return {string} HTML Page
+   */
+  render () {
+
+    let body = `&lt;!DOCTYPE html>&lt;html>&lt;head>&lt;title>${this.title}&lt;/title>&lt;meta type="description" content="${this.description}" />`
+
+    for (let style of this.styles) {
+
+      body += `&lt;link rel="stylesheet" href="${style}"/>`
+
+    }
+
+    for (let script of this.javascripts) {
+
+      body += `&lt;script src="${script}">`
+
+    }
+
+    body += `&lt;/head>&lt;body>`
+
+    for (let group of this.groups) {
+
+      body += `${group.render()}`
+
+    }
+
+    body += `&lt;/body>&lt;/html>`
+
+    return body
+
+  }
+
+}
+
+module.exports = {
+  Component,
+  Group,
+  Page
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-eazerjs.html">eazerjs</a></li></ul><h3>Classes</h3><ul><li><a href="module-eazerjs-Component.html">Component</a></li><li><a href="module-eazerjs-Group.html">Group</a></li><li><a href="module-eazerjs-Page.html">Page</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Oct 20 2018 13:35:30 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
